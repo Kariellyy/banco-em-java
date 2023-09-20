@@ -6,6 +6,7 @@ public class App {
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         Conta conta = null; 
+        Usuario usuario = null;
         List<Transacao> transacoes = new ArrayList<>();
 
         
@@ -29,16 +30,21 @@ public class App {
                 String cpf = input.next();
                 System.out.println("--------------------------------");
 
-                System.out.print("Insira o número da sua conta: ");
-                String numeroConta = input.next();
+                System.out.print("Insira o número da sua agencia: ");
+                String agencia = input.next();
+                
+                System.out.println("--------------------------------");
+                
+                conta = new Conta(agencia);
+                usuario = new Usuario(nome, cpf);
+
+                System.out.println(conta.getNumero());
                 System.out.println("--------------------------------");
                 System.out.println("Conta salva com sucesso!");
-                
-                conta = new Conta(nome, cpf, numeroConta);
-                
+
                 while (conta != null){
                     System.out.println("---------------------------------------------------------------");
-                    System.out.println("Bem-vinda " + conta.getNome() + ", seu saldo é: " + conta.getSaldo());
+                    System.out.println("Bem-vinda " + usuario.getNome() + ", seu saldo é: " + conta.getSaldo());
                     System.out.println("---------------------------------------------------------------");
                     System.out.println("1 - Depositar");
                     System.out.println("2 - Transferir");
@@ -58,7 +64,7 @@ public class App {
                             System.out.println("Insira o valor que deseja transferir: ");
                             double valorTransferencia = input.nextDouble();
                             conta.transferir(valorTransferencia);
-                            Transacao newTransacao = new Transacao(conta.getNome(), conta.getnumero(), valorTransferencia);
+                            Transacao newTransacao = new Transacao(usuario.getNome(), conta.getAgencia(), valorTransferencia);
                             transacoes.add(newTransacao);
                             continue;
                         

@@ -1,39 +1,22 @@
 
 class Conta {
-    private String nome;
-    private String cpf;
-    private String numeroConta;
+    private static int contador;
+    private String agencia; 
+    private int numeroConta;
     private double saldo;
 
-    public Conta(String nome, String cpf, String numeroConta) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.numeroConta = numeroConta;
+    public Conta(String agencia) {
+        this.agencia = agencia;
+        this.numeroConta = ++contador;
         this.saldo = 0;
     }
 
-    public String getNome() {
-        return nome;
+    public String getAgencia(){
+        return agencia;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getnumero() {
+    public int getNumero() {
         return numeroConta;
-    }
-
-    public void setnumero(String numeroConta) {
-        this.numeroConta = numeroConta;
     }
 
     public double getSaldo() {
